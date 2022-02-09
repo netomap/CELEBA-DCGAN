@@ -2,6 +2,8 @@
 
 ### Celeba DCGAN testes and training
 
+### Aprendizado retirado do livro "Hands-On Generative Adversarial Networks with Pytorch 1.x", **John Hany and Greg Walters**
+
 1. Trabalho para aprendizado sobre DC-GAN, utilizando o dataset de imagens de faces. Para download das imagens, acessar o documento [DOWNLOAD-DATASET-FROM-GDRIVE.ipynb](./DOWNLOAD-DATASET-FROM-GDRIVE.ipynb).  
 
 1. Variáveis adotadas para o treinamento: 
@@ -83,3 +85,29 @@ O primeiro é uma amostra de algumas imagens geradas pelo modelo:
 
 9. Por último, podemos criar um gif com essas interpolações:  
 ![gif1](./results/interpolation_1.gif) ![gif2](./results/interpolation_2.gif)
+
+# SEMANTIC VECTOR ARITHMETIC
+
+10. Também podemos realizar operações vetoriais com as expressões, como:  
+
+* Imagens de mulheres:  
+
+![Serious](./SEMANTIC-VECTOR/serious_woman.png)
+* Imagens de mulheres sorrindo:  
+
+![Serious](./SEMANTIC-VECTOR/smiling_woman.png)
+
+* Tiramos a média desses vetores, como:  
+```
+serious_mean = np.mean(serious_woman, axis=0)
+smiling_mean = np.mean(woman_smiling, axis=0)
+
+smiling_vector = smiling_mean - serious_mean
+smiling_tensor = torch.tensor(smiling_vector).unsqueeze_(0)
+```
+
+* E podemos somar a uma imagem, por exemplo, de uma pessoa séria (sem estar sorrindo):  
+```
+smiling_man = serious_man + smiling_tensor
+```
+![Serious](./SEMANTIC-VECTOR/arithmetic_result.png)
