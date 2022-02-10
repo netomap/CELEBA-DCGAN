@@ -83,8 +83,14 @@ O primeiro é uma amostra de algumas imagens geradas pelo modelo:
 
 ![Resultado2](./results/interpolation_2.png)
 
-9. Por último, podemos criar um gif com essas interpolações:  
+9. Por último, podemos criar um gif com essas interpolações:
+* Entre personagens:  
+
 ![gif1](./results/interpolation_1.gif) ![gif2](./results/interpolation_2.gif)
+
+* Ou mostrando a evolução de um **fixed_noise** que é passado pela rede **generator** a cada final de época para analisar sua performance, conforme segue:  
+
+![gif3](epochs_result_interpolation.gif)
 
 # SEMANTIC VECTOR ARITHMETIC
 
